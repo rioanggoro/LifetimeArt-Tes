@@ -13,84 +13,84 @@ const testimonialsData = [
     quote:
       "I couldn't be happier with my loft conversion. The attention to detail and quality of work were outstanding. Reﬁt made the whole process smooth and stress-free!",
     author: 'Emily Carter',
-    authorImage: '/placeholder.svg?height=32&width=32',
+    authorImage: '/people/laura.jpg',
   },
   {
     rating: 5,
     quote:
       'Reﬁt transformed our outdoor space with a beautiful garden path. The work was completed on time, and the ﬁnish is excellent. A great team to work with!',
     author: 'Michael Turner',
-    authorImage: '/placeholder.svg?height=32&width=32',
+    authorImage: '/people/michael.jpg',
   },
   {
     rating: 5,
     quote:
       'Our new bathroom is a dream come true. Professional, communicative, and the results exceeded our expectations. Highly recommend!',
     author: 'Sarah Jones',
-    authorImage: '/placeholder.svg?height=32&width=32',
+    authorImage: '/people/laura.jpg',
   },
   {
     rating: 5,
     quote:
       "The kitchen renovation was handled brilliantly. LifetimeArt's team is skilled, tidy, and a pleasure to have in our home.",
     author: 'David Chen',
-    authorImage: '/placeholder.svg?height=32&width=32',
+    authorImage: '/people/rachel.jpeg',
   },
   {
     rating: 5,
     quote:
       'From start to finish, the service was top-tier. Our extension feels like it has always been a part of the house.',
     author: 'Jessica Williams',
-    authorImage: '/placeholder.svg?height=32&width=32',
+    authorImage: '/people/laura.jpg',
   },
   {
     rating: 5,
     quote:
       'A truly professional and seamless experience. The quality of the restoration work is second to none.',
     author: 'Tom Brown',
-    authorImage: '/placeholder.svg?height=32&width=32',
+    authorImage: '/people/rachel.jpeg',
   },
   {
     rating: 5,
     quote:
       'An incredible job on our external works. The craftsmanship was top-notch, and the finish is highly recommended!',
     author: 'Laura Green',
-    authorImage: '/placeholder.svg?height=32&width=32',
+    authorImage: '/people/laura.jpg',
   },
   {
     rating: 5,
     quote:
       'Brilliant service from start to ﬁnish. The team was professional, communicative, and the results exceeded my expectations. My new bathroom looks amazing!',
     author: 'Chris Davis',
-    authorImage: '/placeholder.svg?height=32&width=32',
+    authorImage: '/people/laura.jpg',
   },
   {
     rating: 5,
     quote:
       "I couldn't be happier with my loft conversion. The attention to detail and quality of work were outstanding. Reﬁt made the whole process smooth and stress-free!",
     author: 'Emily Carter',
-    authorImage: '/placeholder.svg?height=32&width=32',
+    authorImage: '/people/rachel.jpeg',
   },
   {
     rating: 5,
     quote:
       'Reﬁt transformed our outdoor space with a beautiful garden path. The work was completed on time, and the ﬁnish is excellent. A great team to work with!',
     author: 'Michael Turner',
-    authorImage: '/placeholder.svg?height=32&width=32',
+    authorImage: '/people/laura.jpg',
   },
   {
     rating: 5,
     quote:
       "The kitchen renovation was handled brilliantly. LifetimeArt's team is skilled, tidy, and a pleasure to have in our home.",
     author: 'David Chen',
-    authorImage: '/placeholder.svg?height=32&width=32',
+    authorImage: '/people/rachel.jpeg',
   },
   {
     rating: 5,
     quote:
       'From start to finish, the service was top-tier. Our extension feels like it has always been a part of the house.',
     author: 'Jessica Williams',
-    authorImage: '/placeholder.svg?height=32&width=32',
+    authorImage: '/people/laura.jpg',
   },
 ];
 
