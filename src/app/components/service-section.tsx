@@ -104,7 +104,6 @@ export default function ServicesSection() {
       className="w-full py-24 lg:py-32 bg-white text-black"
     >
       <div className="mx-auto w-full max-w-7xl px-6 lg:px-8">
-        {/* Title Block */}
         <motion.div variants={itemVariants} className="text-center mb-16">
           <div className="inline-block rounded-full bg-black px-4 py-2 text-sm font-light text-white mb-4">
             Services
@@ -118,7 +117,6 @@ export default function ServicesSection() {
         </motion.div>
 
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
-          {/* Image Panel */}
           <motion.div
             variants={itemVariants}
             className="sticky top-24 h-[500px] lg:h-[600px]"
@@ -145,7 +143,6 @@ export default function ServicesSection() {
             </AnimatePresence>
           </motion.div>
 
-          {/* Accordion Items */}
           <motion.div variants={itemVariants} className="space-y-2">
             {servicesData.map((service) => {
               const isOpen = openAccordion === service.id;
@@ -208,7 +205,6 @@ export default function ServicesSection() {
                         }}
                         className="overflow-hidden"
                       >
-                        {/* ✨ Deskripsi dengan animasi fade-in dari kanan */}
                         <motion.p
                           variants={descriptionVariants}
                           initial="initial"
