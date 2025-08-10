@@ -9,7 +9,7 @@ export default function AboutUsSection() {
 
   const scroll = (direction: 'left' | 'right') => {
     if (scrollRef.current) {
-      const scrollAmount = scrollRef.current.clientWidth / 2; // Scroll half the width of the container
+      const scrollAmount = scrollRef.current.clientWidth / 2;
       if (direction === 'left') {
         scrollRef.current.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
       } else {
@@ -74,10 +74,10 @@ export default function AboutUsSection() {
         {/* Top Section: Title and Intro Text */}
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 mb-16 items-start">
           <div className="flex flex-col items-start space-y-4">
-            <div className="inline-flex items-center gap-2 rounded-full bg-black px-4 py-2 text-sm font-medium text-white">
+            <div className="inline-flex items-center gap-2 rounded-full bg-black px-4 py-2 text-sm font-light text-white">
               About us
             </div>
-            <h2 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl/none">
+            <h2 className="text-4xl font-light tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl/none">
               Home Improvement Specialists
             </h2>
           </div>
@@ -136,8 +136,8 @@ export default function AboutUsSection() {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
           {stats.map((stat, index) => (
             <div key={index} className="flex flex-col items-center space-y-2">
-              <h3 className="text-5xl font-bold text-black">{stat.number}</h3>
-              <p className="text-lg font-semibold text-black">{stat.title}</p>
+              <h3 className="text-5xl font-light text-black">{stat.number}</h3>
+              <p className="text-lg font-light text-black">{stat.title}</p>
               <p className="text-sm text-gray-600">{stat.description}</p>
             </div>
           ))}
