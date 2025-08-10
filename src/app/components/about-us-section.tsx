@@ -99,7 +99,7 @@ export default function AboutUsSection() {
             take pride in delivering top-quality craftsmanship and a seamless
             customer experience. Our mission is to bring your vision to life
             while ensuring clear communication and expert guidance at every
-            step. Let's create a home you'll love!
+            step. Let&apos;s create a home you&apos;ll love!
           </motion.p>
         </div>
 
@@ -128,7 +128,7 @@ export default function AboutUsSection() {
 
         <div className="px-6">
           <motion.div variants={containerVariants} className="space-y-12">
-            {stats.map((stat, index) => (
+            {stats.map((stat) => (
               <motion.div
                 variants={fadeInFromBottom}
                 key={stat.title}
@@ -178,7 +178,7 @@ export default function AboutUsSection() {
               more, we take pride in delivering top-quality craftsmanship and a
               seamless customer experience. Our mission is to bring your vision
               to life while ensuring clear communication and expert guidance at
-              every step. Let's create a home you'll love!
+              every step. Let&apos;s create a home you&apos;ll love!
             </motion.p>
           </div>
         </div>

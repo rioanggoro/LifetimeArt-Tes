@@ -18,7 +18,7 @@ const projectsData = [
     tags: ['Kitchen', 'Classic'],
     duration: '6 weeks',
     quote:
-      "LifetimeArt completely transformed our kitchen, making it both beautiful and professional and communicative throughout. We couldn't be happier with the result.",
+      'LifetimeArt completely transformed our kitchen, making it both beautiful and professional and communicative throughout. We couldn&apos;t be happier with the result.',
     author: 'Rachel Morgan',
     authorImage: '/people/rachel.jpeg',
     projectImage: '/images/img-2.png',
@@ -30,7 +30,7 @@ const projectsData = [
     tags: ['External', 'Garden'],
     duration: '4 weeks',
     quote:
-      "The team at LifetimeArt did an amazing job on our garden path. It's sturdy, looks fantastic, and has completely transformed our outdoor space. They were professional and delivered beautiful work—we would highly recommend!",
+      'The team at LifetimeArt did an amazing job on our garden path. It&apos;s sturdy, looks fantastic, and has completely transformed our outdoor space. They were professional and delivered beautiful work—we would highly recommend!',
     author: 'Michael Turner',
     authorImage: '/people/michael.jpg',
     projectImage: '/images/img-3.png',
@@ -191,8 +191,8 @@ export default function OurWorkSection() {
             Get inspired by our work
           </h2>
           <p className="mt-4 text-neutral-600 text-lg">
-            See how we've transformed homes with our expert craftsmanship and
-            attention to detail.
+            See how we&apos;ve transformed homes with our expert craftsmanship
+            and attention to detail.
           </p>
         </motion.div>
 
