@@ -1,5 +1,6 @@
 import AboutUsSection from './components/about-us-section';
 import HeroSection from './components/hero-section';
+import OurWorkSection from './components/our-work-section';
 import ServicesSection from './components/service-section';
 import SiteHeader from './components/site-header';
 
@@ -11,6 +12,7 @@ export default function Home() {
         <HeroSection />
         <AboutUsSection />
         <ServicesSection />
+        <OurWorkSection />
       </main>
     </div>
   );
