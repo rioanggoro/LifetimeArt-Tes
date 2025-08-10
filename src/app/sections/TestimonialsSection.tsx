@@ -51,7 +51,7 @@ const TestimonialCard = ({
 const TestimonialMarqueeRow = ({
   testimonials,
   direction = 'left',
-  duration = '60s', // Default duration for marquee
+  duration = '60s',
 }: {
   testimonials: typeof testimonialsData;
   direction?: 'left' | 'right';
@@ -62,7 +62,7 @@ const TestimonialMarqueeRow = ({
       className={`flex gap-6 lg:gap-8 marquee-inner ${
         direction === 'left' ? 'animate-marquee-left' : 'animate-marquee-right'
       }`}
-      style={{ '--marquee-duration': duration } as React.CSSProperties} // Pass duration as CSS variable
+      style={{ '--marquee-duration': duration } as React.CSSProperties}
     >
       {[...testimonials, ...testimonials].map((testimonial, index) => (
         <TestimonialCard key={index} testimonial={testimonial} />
@@ -83,7 +83,7 @@ const MobileTestimonialCarousel = ({
     if (scrollRef.current) {
       const scrollLeft = scrollRef.current.scrollLeft;
       const cardWidth = scrollRef.current.children[0]?.clientWidth || 0;
-      const gap = 24; // Tailwind's gap-6 is 24px
+      const gap = 24;
       const newIndex = Math.round(scrollLeft / (cardWidth + gap));
       setCurrentIndex(newIndex);
     }
@@ -92,7 +92,7 @@ const MobileTestimonialCarousel = ({
   const scrollToCard = (index: number) => {
     if (scrollRef.current) {
       const cardWidth = scrollRef.current.children[0]?.clientWidth || 0;
-      const gap = 24; // Tailwind's gap-6 is 24px
+      const gap = 24;
       scrollRef.current.scrollTo({
         left: index * (cardWidth + gap),
         behavior: 'smooth',

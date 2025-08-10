@@ -62,7 +62,7 @@ function AccordionItem({ item, isOpen, onToggle }: AccordionItemProps) {
         {isOpen && (
           <motion.div
             initial={{ opacity: 0, height: 0, marginTop: 0 }}
-            animate={{ opacity: 1, height: 'auto', marginTop: '16px' }} // Adjusted margin-top
+            animate={{ opacity: 1, height: 'auto', marginTop: '16px' }}
             exit={{ opacity: 0, height: 0, marginTop: 0 }}
             transition={{ duration: 0.3, ease: 'easeOut' }}
             className="overflow-hidden"
