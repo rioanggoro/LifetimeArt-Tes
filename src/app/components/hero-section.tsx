@@ -10,7 +10,6 @@ export default function HeroSection() {
   return (
     <section className="w-full bg-[#1a1a1a] text-white relative min-h-screen flex items-center">
       <div className="container mx-auto px-6 py-16 lg:py-24 grid lg:grid-cols-2 gap-16 items-center max-w-7xl">
-        {/* Left Content Area */}
         <div className="flex flex-col items-start space-y-10 lg:pr-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
