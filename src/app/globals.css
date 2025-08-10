@@ -1,5 +1,5 @@
-@import "tailwindcss";
-@import "tw-animate-css";
+@import 'tailwindcss';
+@import 'tw-animate-css';
 
 @custom-variant dark (&:is(.dark *));
 
@@ -118,5 +118,39 @@
   }
   body {
     @apply bg-background text-foreground;
+  }
+}
+
+.scroller-container {
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 20%,
+    black 80%,
+    transparent
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 20%,
+    black 80%,
+    transparent
+  );
+}
+
+.scroller-inner {
+  animation: autoscroll 60s linear infinite;
+}
+
+.scroller-container:hover .scroller-inner {
+  animation-play-state: paused;
+}
+
+@keyframes autoscroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
   }
 }
