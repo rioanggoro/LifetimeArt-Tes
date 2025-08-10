@@ -2,6 +2,7 @@ import type { Config } from 'tailwindcss';
 
 const config = {
   darkMode: 'class',
+
   content: [
     './pages/**/*.{ts,tsx}',
     './components/**/*.{ts,tsx}',
@@ -9,7 +10,9 @@ const config = {
     './src/**/*.{ts,tsx}',
     '*.{js,ts,jsx,tsx,mdx}',
   ],
+
   prefix: '',
+
   theme: {
     container: {
       center: true,
@@ -18,11 +21,15 @@ const config = {
         '2xl': '1400px',
       },
     },
+
+    screens: {
+      tablet: '1024px',
+      laptop: '1280px',
+      desktop: '1440px',
+      ultrawide: '1960px',
+    },
+
     extend: {
-      screens: {
-        desktop: '1440px',
-        widescreen: '1960px',
-      },
       colors: {
         border: 'hsl(var(--border))',
         input: 'hsl(var(--input))',
@@ -58,11 +65,13 @@ const config = {
           foreground: 'hsl(var(--card-foreground))',
         },
       },
+
       borderRadius: {
         lg: 'var(--radius)',
         md: 'calc(var(--radius) - 2px)',
         sm: 'calc(var(--radius) - 4px)',
       },
+
       keyframes: {
         'accordion-down': {
           from: { height: '0' },
@@ -79,6 +88,8 @@ const config = {
       },
     },
   },
+
+  // Plugin untuk animasi dari shadcn/ui
   plugins: [require('tailwindcss-animate')],
 } satisfies Config;
 

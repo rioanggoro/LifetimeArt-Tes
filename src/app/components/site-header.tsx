@@ -1,13 +1,39 @@
 'use client';
+
 import Link from 'next/link';
 import { MountainIcon, MenuIcon, XIcon } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+
+// ✨ Perbaikan: Definisikan varian animasi di luar komponen untuk kode yang lebih bersih
+const listVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.07, // Efek muncul satu per satu
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: -20 },
+  visible: { opacity: 1, y: 0 },
+};
 
 export default function SiteHeader() {
   const [isOpen, setIsOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 10);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const navLinks = [
     { name: 'About', href: '#about-us' },
@@ -18,17 +44,22 @@ export default function SiteHeader() {
   ];
 
   return (
-    <header className="px-4 lg:px-6 h-14 flex items-center bg-black text-white z-50 relative">
+    <header
+      className={`fixed top-0 left-0 right-0 z-50 flex h-20 items-center px-4 transition-all duration-300 lg:px-6 ${
+        isScrolled ? 'bg-black/80 backdrop-blur-sm' : 'bg-transparent'
+      }`}
+    >
       <Link href="#" className="flex items-center justify-center gap-2">
+        {/* 💡 Ganti MountainIcon dengan logo LifetimeArt (misal SVG) */}
         <MountainIcon className="h-6 w-6 text-white" />
         <span className="text-lg font-bold">LifetimeArt</span>
       </Link>
-      <nav className="ml-auto hidden md:flex gap-6">
+      <nav className="ml-auto hidden gap-6 md:flex">
         {navLinks.map((link) => (
           <Link
             key={link.name}
             href={link.href}
-            className="text-sm font-medium hover:underline underline-offset-4 text-white"
+            className="text-sm font-medium text-neutral-300 transition-colors hover:text-white"
           >
             {link.name}
           </Link>
@@ -44,13 +75,11 @@ export default function SiteHeader() {
           </SheetTrigger>
           <SheetContent
             side="right"
-            className="w-full max-w-xs sm:max-w-sm bg-black/95 backdrop-blur-sm p-6 text-white"
+            className="w-full max-w-sm bg-black/90 p-6 text-white backdrop-blur-md"
           >
-            <div className="flex items-center justify-between mb-6">
-              <Link href="#" className="flex items-center justify-center gap-2">
-                <MountainIcon className="h-6 w-6 text-white" />
-                <span className="text-lg font-bold">LifetimeArt</span>
-              </Link>
+            {/* Header di dalam Sheet */}
+            <div className="mb-6 flex items-center justify-between">
+              <span className="text-lg font-bold">Menu</span>
               <Button
                 variant="ghost"
                 size="icon"
@@ -61,34 +90,26 @@ export default function SiteHeader() {
                 <span className="sr-only">Close menu</span>
               </Button>
             </div>
-            <nav className="grid gap-4 text-lg font-medium">
-              <AnimatePresence>
-                {isOpen && (
-                  <motion.div
-                    initial={{ opacity: 0, y: -20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -20 }}
-                    transition={{ staggerChildren: 0.1 }}
-                  >
-                    {navLinks.map((link, index) => (
-                      <motion.div
-                        key={link.name}
-                        initial={{ opacity: 0, y: -20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: index * 0.05 }}
-                      >
-                        <Link
-                          href={link.href}
-                          className="block py-2 text-white hover:text-gray-300"
-                          onClick={() => setIsOpen(false)}
-                        >
-                          {link.name}
-                        </Link>
-                      </motion.div>
-                    ))}
-                  </motion.div>
-                )}
-              </AnimatePresence>
+            {/* Navigasi Mobile dengan Animasi yang Diperbaiki */}
+            <nav className="grid gap-2 text-lg font-medium">
+              <motion.ul
+                variants={listVariants}
+                initial="hidden"
+                animate="visible"
+                className="space-y-2"
+              >
+                {navLinks.map((link) => (
+                  <motion.li key={link.name} variants={itemVariants}>
+                    <Link
+                      href={link.href}
+                      className="block py-2 text-neutral-300 transition-colors hover:text-white"
+                      onClick={() => setIsOpen(false)}
+                    >
+                      {link.name}
+                    </Link>
+                  </motion.li>
+                ))}
+              </motion.ul>
             </nav>
           </SheetContent>
         </Sheet>
