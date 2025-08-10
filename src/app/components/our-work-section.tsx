@@ -62,7 +62,6 @@ const itemFadeInUp: Variants = {
   visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: 'easeOut' } },
 };
 
-// --- Komponen Project Card (Terpisah) ---
 interface ProjectCardProps {
   project: (typeof projectsData)[0];
   isReversed?: boolean;
@@ -154,7 +153,6 @@ function ProjectCard({ project, isReversed = false }: ProjectCardProps) {
   );
 }
 
-// --- Komponen Utama ---
 export default function OurWorkSection() {
   const sectionRef = useRef(null);
   const isInView = useInView(sectionRef, { once: true, amount: 0.2 });

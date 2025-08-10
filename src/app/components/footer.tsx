@@ -3,9 +3,8 @@
 import { useRef } from 'react';
 import { motion, useInView, type Variants } from 'framer-motion';
 import Link from 'next/link';
-import { MountainIcon } from 'lucide-react'; // Placeholder untuk logo
+import { MountainIcon } from 'lucide-react';
 
-// --- Data untuk Link Navigasi ---
 const footerLinks = {
   column1: [
     { name: 'About us', href: '#about-us' },
@@ -19,20 +18,17 @@ const footerLinks = {
   ],
 };
 
-// --- Varian Animasi ---
 const itemFadeInUp: Variants = {
   hidden: { opacity: 0, y: 20 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: 'easeOut' } },
 };
 
-// --- Komponen Utama ---
 export default function Footer() {
   const footerRef = useRef(null);
   const isInView = useInView(footerRef, { once: true, amount: 0.2 });
 
   return (
     <footer className="w-full bg-white pt-12">
-      {/* ✅ Ganti `rounded-3xl` menjadi `rounded-t-3xl` */}
       <motion.div
         ref={footerRef}
         variants={itemFadeInUp}
@@ -53,14 +49,11 @@ export default function Footer() {
               customer experience.
             </p>
           </div>
-
-          {/* Sisi Kanan: Quick Links */}
           <div className="flex-shrink-0">
             <h3 className="text-base font-medium text-white mb-4">
               Quick links
             </h3>
             <div className="grid grid-cols-2 gap-x-12 gap-y-2">
-              {/* Kolom 1 */}
               <ul className="space-y-2">
                 {footerLinks.column1.map((link) => (
                   <li key={link.name}>
@@ -90,7 +83,6 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Copyright section */}
         <div className="border-t border-neutral-800 pt-8">
           <p className="text-sm text-center text-neutral-500">
             © {new Date().getFullYear()} LifetimeArt. All rights reserved.

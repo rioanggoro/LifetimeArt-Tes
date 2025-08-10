@@ -66,7 +66,8 @@ export default function HeroSection() {
       ref={ref}
       className="w-full bg-[#1a1a1a] text-white relative min-h-screen flex items-center"
     >
-      <div className="lg:hidden w-full px-4 py-8 flex flex-col min-h-screen">
+      {/* Mobile/Tablet Layout - Maksimal 1280px */}
+      <div className="xl:hidden w-full px-4 py-8 flex flex-col min-h-screen">
         <div className="absolute inset-0 z-0">
           <Image
             src="/images/hero-image.jpg"
@@ -139,13 +140,14 @@ export default function HeroSection() {
         </motion.div>
       </div>
 
-      <div className="hidden lg:flex container mx-auto px-6 py-16 lg:py-24 items-center max-w-7xl">
-        <div className="grid lg:grid-cols-2 gap-16 items-center w-full">
+      {/* Desktop Layout - 1281px ke atas */}
+      <div className="hidden xl:flex container mx-auto px-6 py-16 xl:py-24 items-center max-w-7xl">
+        <div className="grid xl:grid-cols-2 gap-16 items-center w-full">
           <motion.div
             variants={containerVariants}
             initial="hidden"
             animate={isInView ? 'visible' : 'hidden'}
-            className="flex flex-col items-start space-y-10 lg:pr-8"
+            className="flex flex-col items-start space-y-10 xl:pr-8"
           >
             <motion.div
               variants={pillVariants}
@@ -156,7 +158,7 @@ export default function HeroSection() {
             </motion.div>
             <motion.h1
               variants={containerVariants}
-              className="text-5xl font-light tracking-tight sm:text-6xl lg:text-7xl leading-[1.1] text-white"
+              className="text-5xl font-light tracking-tight sm:text-6xl xl:text-7xl leading-[1.1] text-white"
             >
               {headlineLines.map((line, index) => (
                 <div key={index} className="overflow-hidden py-1">
@@ -196,7 +198,7 @@ export default function HeroSection() {
               </motion.div>
             </motion.div>
           </motion.div>
-          <div className="relative w-full h-[500px] lg:h-[700px]">
+          <div className="relative w-full h-[500px] xl:h-[700px]">
             <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
               animate={isInView ? { opacity: 1, scale: 1 } : {}}

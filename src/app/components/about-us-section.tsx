@@ -69,7 +69,7 @@ export default function AboutUsSection() {
       variants={containerVariants}
       className="w-full py-16 lg:py-32 bg-white text-black overflow-hidden"
     >
-      <div className="lg:hidden">
+      <div className="xl:hidden">
         <div className="px-6 mb-12">
           <motion.div
             variants={fadeInFromBottom}
@@ -149,9 +149,9 @@ export default function AboutUsSection() {
         </div>
       </div>
 
-      <div className="hidden lg:block">
-        <div className="mx-auto w-full max-w-7xl px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 mb-20 items-start">
+      <div className="hidden xl:block">
+        <div className="mx-auto w-full max-w-7xl px-6 xl:px-8">
+          <div className="grid xl:grid-cols-2 gap-8 xl:gap-16 mb-20 items-start">
             <motion.div
               variants={fadeInFromBottom}
               className="flex flex-col items-start space-y-4"
@@ -159,7 +159,7 @@ export default function AboutUsSection() {
               <div className="inline-block rounded-full bg-black px-4 py-2 text-sm font-light text-white">
                 About us
               </div>
-              <h2 className="text-4xl font-light tracking-tight sm:text-5xl lg:text-6xl/tight">
+              <h2 className="text-4xl font-light tracking-tight sm:text-5xl xl:text-6xl/tight">
                 Home
                 <br />
                 Improvement
@@ -170,7 +170,7 @@ export default function AboutUsSection() {
 
             <motion.p
               variants={fadeInFromRight}
-              className="max-w-[700px] text-neutral-600 text-lg leading-relaxed lg:pt-4"
+              className="max-w-[700px] text-neutral-600 text-lg leading-relaxed xl:pt-4"
             >
               Welcome to LifetimeArt, your trusted home improvement experts,
               dedicated to transforming homes with precision and care. With
@@ -187,11 +187,11 @@ export default function AboutUsSection() {
           variants={fadeInFromBottom}
           className="relative mb-24 scroller-container"
         >
-          <div className="flex gap-6 lg:gap-8 scroller-inner">
+          <div className="flex gap-6 xl:gap-8 scroller-inner">
             {extendedImages.map((image, index) => (
               <div
                 key={index}
-                className="flex-shrink-0 rounded-xl overflow-hidden shadow-lg border border-gray-200 w-[70vw] md:w-[40vw] lg:w-[30vw] h-[400px]"
+                className="flex-shrink-0 rounded-xl overflow-hidden shadow-lg border border-gray-200 w-[70vw] md:w-[40vw] xl:w-[30vw] h-[400px]"
               >
                 <Image
                   src={image.src}
@@ -205,7 +205,7 @@ export default function AboutUsSection() {
           </div>
         </motion.div>
 
-        <div className="mx-auto w-full max-w-7xl px-6 lg:px-8">
+        <div className="mx-auto w-full max-w-7xl px-6 xl:px-8">
           <motion.div
             variants={containerVariants}
             className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center"

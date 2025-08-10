@@ -17,7 +17,6 @@ export default function SiteHeader() {
       const scrollY = window.scrollY;
       setIsScrolled(scrollY > 10);
 
-      // Check if we're on a white background section
       const whiteSections = ['about-us', 'services', 'faqs'];
       const headerHeight = 80;
 

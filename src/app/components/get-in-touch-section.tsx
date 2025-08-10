@@ -28,7 +28,7 @@ export default function GetInTouchSection() {
     <section id="contact" className="w-full py-24 lg:py-32 bg-white">
       <motion.div
         ref={sectionRef}
-        variants={itemFadeInUp} // Wadah ini akan muncul dengan animasi fade-in
+        variants={itemFadeInUp}
         initial="hidden"
         animate={isInView ? 'visible' : 'hidden'}
         className="mx-auto w-full max-w-7xl rounded-3xl bg-black text-white p-12 lg:p-20"

@@ -72,7 +72,6 @@ export default function MobileHeader() {
     { name: 'Contact', href: '#contact' },
   ];
 
-  // Tentukan warna berdasarkan section saat ini
   const isDarkSection = currentSection === 'hero';
   const headerBg = isOpen
     ? 'bg-transparent'
@@ -85,7 +84,7 @@ export default function MobileHeader() {
 
   return (
     <header
-      className={`md:hidden fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${headerBg}`}
+      className={`xl:hidden fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${headerBg}`}
     >
       <div className="mx-auto flex h-16 w-full items-center justify-between px-4">
         <Link href="#" className="flex items-center justify-center gap-2">

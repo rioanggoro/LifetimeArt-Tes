@@ -2,10 +2,8 @@
 
 import Link from 'next/link';
 import { MountainIcon, MenuIcon, XIcon } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 
 export default function DesktopHeader() {
   const [isOpen, setIsOpen] = useState(false);
@@ -76,22 +74,18 @@ export default function DesktopHeader() {
       animate="visible"
       variants={headerVariants}
       transition={{ duration: 0.5 }}
-      className={`fixed top-0 left-0 right-0 z-50 px-4 lg:px-6 h-16 lg:h-20 flex items-center transition-all duration-300 ${headerBg}`}
+      className={`hidden xl:flex fixed top-0 left-0 right-0 z-50 px-4 xl:px-6 h-16 xl:h-20 items-center transition-all duration-300 ${headerBg}`}
     >
-      <Link
-        href="#"
-        className="hidden sm:flex items-center justify-center gap-2"
-      >
+      <Link href="#" className="flex items-center justify-center gap-2">
         <MountainIcon className={`h-6 w-6 ${textColor}`} />
         <span className={`text-lg font-bold ${textColor}`}>LifetimeArt</span>
       </Link>
-      <nav className="ml-auto hidden md:flex gap-6">
+      <nav className="ml-auto flex gap-6">
         {navLinks.map((link) => (
           <div key={link.name}>
-            {' '}
             <Link
               href={link.href}
-              className={`relative text-sm font-medium ${textColor} ${hoverColor} transition-colors`} // Removed overflow-hidden and group
+              className={`relative text-sm font-medium ${textColor} ${hoverColor} transition-colors`}
               onClick={() => setIsOpen(false)}
             >
               {link.name}
@@ -99,71 +93,6 @@ export default function DesktopHeader() {
           </div>
         ))}
       </nav>
-      <div className="ml-auto md:hidden">
-        <Sheet open={isOpen} onOpenChange={setIsOpen}>
-          <SheetTrigger asChild>
-            <Button
-              variant="ghost"
-              size="icon"
-              className={`h-8 w-8 ${textColor} ${hoverColor}`}
-            >
-              <MenuIcon className="h-5 w-5" />
-              <span className="sr-only">Toggle mobile menu</span>
-            </Button>
-          </SheetTrigger>
-          <SheetContent
-            side="right"
-            className="w-full max-w-xs sm:max-w-sm bg-black/95 backdrop-blur-sm p-6 text-white"
-          >
-            <div className="flex items-center justify-between mb-6">
-              <Link href="#" className="flex items-center justify-center gap-2">
-                <MountainIcon className="h-6 w-6 text-white" />
-                <span className="text-lg font-bold text-white">
-                  LifetimeArt
-                </span>
-              </Link>
-              <Button
-                variant="ghost"
-                size="icon"
-                className="h-8 w-8 text-white hover:text-gray-300"
-                onClick={() => setIsOpen(false)}
-              >
-                <XIcon className="h-5 w-5" />
-                <span className="sr-only">Close menu</span>
-              </Button>
-            </div>
-            <nav className="grid gap-4 text-lg font-medium">
-              <AnimatePresence>
-                {isOpen && (
-                  <motion.div
-                    initial={{ opacity: 0, y: -20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -20 }}
-                    transition={{ staggerChildren: 0.1 }}
-                  >
-                    {navLinks.map((link, index) => (
-                      <motion.div
-                        key={link.name}
-                        initial={{ opacity: 0, y: -20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: index * 0.05 }}
-                      >
-                        <Link
-                          href={link.href}
-                          className="block py-2 text-white hover:text-gray-300 transition-colors"
-                          onClick={() => setIsOpen(false)}
-                        >
-                          {link.name}
-                        </Link>
-                      </motion.div>
-                    ))}
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </nav>
-          </SheetContent>
-        </Sheet>
-      </div>
     </motion.header>
   );
 }

@@ -23,10 +23,11 @@ const config = {
     },
 
     screens: {
-      tablet: '1024px',
-      laptop: '1280px',
-      desktop: '1440px',
-      ultrawide: '1960px',
+      sm: '640px',
+      md: '768px',
+      lg: '1024px',
+      xl: '1281px', // Custom breakpoint: 1281px dan ke atas untuk desktop
+      '2xl': '1536px',
     },
 
     extend: {

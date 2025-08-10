@@ -7,7 +7,7 @@ import {
   useInView,
   type Variants,
 } from 'framer-motion';
-import { Plus, ArrowUpRight, X } from 'lucide-react'; // Import X icon for open state
+import { Plus, ArrowUpRight, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 
@@ -115,7 +115,7 @@ function AccordionItem({ item, isOpen, onToggle }: AccordionItemProps) {
 }
 
 export default function FaqSection() {
-  const [openFaq, setOpenFaq] = useState<number | null>(0); // Buka item pertama secara default
+  const [openFaq, setOpenFaq] = useState<number | null>(0);
   const sectionRef = useRef(null);
   const isInView = useInView(sectionRef, { once: true, amount: 0.2 });
 
