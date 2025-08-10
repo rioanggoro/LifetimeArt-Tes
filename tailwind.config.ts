@@ -81,15 +81,25 @@ const config = {
           from: { height: 'var(--radix-accordion-content-height)' },
           to: { height: '0' },
         },
+        'marquee-left': {
+          '0%': { transform: 'translateX(0%)' },
+          '100%': { transform: 'translateX(-50%)' },
+        },
+        'marquee-right': {
+          '0%': { transform: 'translateX(-50%)' },
+          '100%': { transform: 'translateX(0%)' },
+        },
       },
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up': 'accordion-up 0.2s ease-out',
+        'marquee-left': 'marquee-left var(--marquee-duration) linear infinite',
+        'marquee-right':
+          'marquee-right var(--marquee-duration) linear infinite',
       },
     },
   },
 
-  // Plugin untuk animasi dari shadcn/ui
   plugins: [require('tailwindcss-animate')],
 } satisfies Config;
 
