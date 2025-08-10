@@ -1,13 +1,13 @@
-import AboutUsSection from './components/about-us-section';
-import FaqSection from './components/faq-section';
-import Footer from './components/footer';
-import GetInTouchSection from './components/get-in-touch-section';
-import HeroSection from './components/hero-section';
-import OurWorkSection from './components/our-work-section';
-import ServicesSection from './components/service-section';
-import DesktopHeader from './components/desktop-header';
-import MobileHeader from './components/mobile-header';
-import TestimonialsSection from './components/testimonial-section';
+import AboutUsSection from './sections/AboutUsSection';
+import FaqSection from './sections/FaqSection';
+import Footer from './sections/Footer';
+import GetInTouchSection from './sections/GetInTouchSection';
+import HeroSection from './sections/HeroSection';
+import OurWorkSection from './sections/OurWorkSection';
+import ServicesSection from './sections/ServicesSection';
+import DesktopHeader from './layout/DesktopHeader';
+import MobileHeader from './layout/MobileHeader';
+import TestimonialsSection from './sections/TestimonialsSection';
 
 export default function Home() {
   return (

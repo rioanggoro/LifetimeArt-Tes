@@ -9,45 +9,7 @@ import {
   AnimatePresence,
 } from 'framer-motion';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
-
-const projectsData = [
-  {
-    title: 'Modern kitchen refit',
-    description:
-      'This kitchen transformation brought sleek, modern design and enhanced functionality to the heart of the home. We focused on creating a seamless flow for cooking and entertaining. With attention to every detail, we delivered a kitchen that balances style and practicality.',
-    tags: ['Kitchen', 'Classic'],
-    duration: '6 weeks',
-    quote:
-      'LifetimeArt completely transformed our kitchen, making it both beautiful and professional and communicative throughout. We couldn&apos;t be happier with the result.',
-    author: 'Rachel Morgan',
-    authorImage: '/people/rachel.jpeg',
-    projectImage: '/images/img-2.png',
-  },
-  {
-    title: 'External garden path build',
-    description:
-      'Our task was to design and build a durable, elegant garden path to enhance the outdoor space. Using premium materials, we created a seamless walkway that blends naturally with the landscape. The project included custom lighting solutions throughout that elevate the overall garden design.',
-    tags: ['External', 'Garden'],
-    duration: '4 weeks',
-    quote:
-      'The team at LifetimeArt did an amazing job on our garden path. It&apos;s sturdy, looks fantastic, and has completely transformed our outdoor space. They were professional and delivered beautiful work—we would highly recommend!',
-    author: 'Michael Turner',
-    authorImage: '/people/michael.jpg',
-    projectImage: '/images/img-3.png',
-  },
-  {
-    title: 'Bathroom renovation',
-    description:
-      'We revitalized this bathroom with a fresh, modern design, incorporating high-end tiling, a freestanding bathtub, and custom vanity. The goal was to maximize space while creating a luxurious and relaxing atmosphere. The final result is a beautifully crafted sanctuary.',
-    tags: ['Bathroom', 'Classic'],
-    duration: '5 weeks',
-    quote:
-      "LifetimeArt completely transformed our kitchen, making it both beautiful and professional and communicative throughout. We couldn't be happier with the result.",
-    author: 'Laura Davies',
-    authorImage: '/people/laura.jpg',
-    projectImage: '/images/img-1.png',
-  },
-];
+import { projectsData } from '@/lib/data';
 
 const sectionContainerVariants: Variants = {
   hidden: { opacity: 0 },

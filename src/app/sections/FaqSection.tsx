@@ -8,46 +8,9 @@ import {
   type Variants,
 } from 'framer-motion';
 import { Plus, ArrowUpRight, X } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import { Button } from '@/app/components/ui/button';
 import Link from 'next/link';
-
-const faqData = [
-  {
-    question: 'What area are you based in?',
-    answer:
-      'We primarily serve London and the surrounding areas, but depending on the project, we can travel further. Contact us to discuss your location and requirements.',
-  },
-  {
-    question: 'How long does a typical project take?',
-    answer:
-      'Project timelines vary depending on size and complexity. We’ll provide an estimated schedule during your consultation and keep you updated throughout the process',
-  },
-  {
-    question: 'Do you offer free quotes?',
-    answer:
-      'Yes, we offer free, no-obligation quotes. Our team will visit your property, assess your needs, and provide a detailed breakdown.',
-  },
-  {
-    question: 'Will I need planning permission for my project?',
-    answer:
-      'This depends on the type and scope of your project. We can guide you through local regulations and help with applications if needed.',
-  },
-  {
-    question: 'Do you provide a guarantee for your work?',
-    answer:
-      'Absolutely. All of our work is backed by a guarantee for quality and durability, giving you peace of mind.',
-  },
-  {
-    question: 'Can I stay in my home while the work is being done?',
-    answer:
-      'In most cases, yes—though it may depend on the scope of work and areas affected. We’ll discuss options to minimise disruption.',
-  },
-  {
-    question: 'How do I get started with a project?',
-    answer:
-      'Simply get in touch with our team. We’ll arrange a consultation, discuss your ideas, and prepare a tailored plan and quote.',
-  },
-];
+import { faqData } from '@/lib/data';
 
 const sectionVariants: Variants = {
   hidden: { opacity: 0 },
@@ -130,7 +93,6 @@ export default function FaqSection() {
     >
       <div className="mx-auto w-full max-w-7xl px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-24 items-start">
-          {/* Left Column: Title and Button (Full width on mobile, centered) */}
           <motion.div
             variants={itemFadeInUp}
             className="lg:sticky lg:top-24 text-center lg:text-left"
@@ -162,7 +124,7 @@ export default function FaqSection() {
               </Link>
             </div>
           </motion.div>
-          {/* Right Column: Accordion List (Full width on mobile) */}
+
           <div className="space-y-4">
             {faqData.map((faq, index) => (
               <AccordionItem

@@ -4,19 +4,7 @@ import { useRef } from 'react';
 import { motion, useInView, type Variants } from 'framer-motion';
 import Link from 'next/link';
 import { MountainIcon } from 'lucide-react';
-
-const footerLinks = {
-  column1: [
-    { name: 'About us', href: '#about-us' },
-    { name: 'Our work', href: '#our-work' },
-    { name: 'Services', href: '#services' },
-  ],
-  column2: [
-    { name: 'Testimonials', href: '#testimonials' },
-    { name: 'FAQs', href: '#faqs' },
-    { name: 'Contact', href: '#contact' },
-  ],
-};
+import { footerLinks } from '@/lib/data';
 
 const itemFadeInUp: Variants = {
   hidden: { opacity: 0, y: 20 },
@@ -36,9 +24,7 @@ export default function Footer() {
         animate={isInView ? 'visible' : 'hidden'}
         className="mx-auto w-full max-w-7xl rounded-t-3xl bg-neutral-900 px-8 py-12 lg:p-16 text-neutral-400"
       >
-        {/* Main content: Logo dan Quick Links */}
         <div className="flex flex-col md:flex-row justify-between items-start gap-12 mb-12">
-          {/* Sisi Kiri: Logo dan Deskripsi */}
           <div className="max-w-sm">
             <Link href="#" className="flex items-center gap-2 mb-4">
               <MountainIcon className="h-6 w-6 text-white" />
@@ -66,7 +52,6 @@ export default function Footer() {
                   </li>
                 ))}
               </ul>
-              {/* Kolom 2 */}
               <ul className="space-y-2">
                 {footerLinks.column2.map((link) => (
                   <li key={link.name}>

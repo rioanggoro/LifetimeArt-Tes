@@ -1,8 +1,9 @@
 'use client';
 
 import Image from 'next/image';
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import { motion, useInView, type Variants } from 'framer-motion';
+import { aboutUsImages, aboutUsStats } from '@/lib/data';
 
 const containerVariants: Variants = {
   hidden: { opacity: 0 },
@@ -24,42 +25,14 @@ const fadeInFromRight: Variants = {
 export default function AboutUsSection() {
   const sectionRef = useRef(null);
   const isInView = useInView(sectionRef, { once: true, amount: 0.2 });
-
-  const images = [
-    { src: '/images/img-1.png', alt: 'Modern dining room' },
-    { src: '/images/img-2.png', alt: 'Cozy living room' },
-    { src: '/images/img-3.png', alt: 'Modern cabin in forest' },
-    { src: '/images/img-4.png', alt: 'Sleek modern kitchen' },
-    { src: '/images/img-5.png', alt: 'Attic bedroom with bookshelves' },
-    { src: '/images/img-6.png', alt: 'Another interior view' },
-  ];
-
-  const extendedImages = [...images, ...images];
-
-  const stats = [
-    {
-      number: '8',
-      title: 'Years experience',
-      description: 'Improving homes with expert craftsmanship for years',
-    },
-    {
-      number: '26',
-      title: 'Projects completed',
-      description:
-        'Over 250 successful projects delivered with quality and care',
-    },
-    {
-      number: '30',
-      title: 'Skilled Tradespeople',
-      description: 'Our team of 30 experts ensures top-quality results',
-    },
-    {
-      number: '100%',
-      title: 'Client satisfaction',
-      description: 'All of our clients are satisfied with our work and service',
-    },
-  ];
-
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const nextImage = () =>
+    setCurrentIndex((prev) => (prev + 1) % aboutUsImages.length);
+  const prevImage = () =>
+    setCurrentIndex(
+      (prev) => (prev - 1 + aboutUsImages.length) % aboutUsImages.length
+    );
+  const extendedImages = [...aboutUsImages, ...aboutUsImages];
   return (
     <motion.section
       id="about-us"
@@ -128,7 +101,7 @@ export default function AboutUsSection() {
 
         <div className="px-6">
           <motion.div variants={containerVariants} className="space-y-12">
-            {stats.map((stat) => (
+            {aboutUsStats.map((stat) => (
               <motion.div
                 variants={fadeInFromBottom}
                 key={stat.title}
@@ -210,7 +183,7 @@ export default function AboutUsSection() {
             variants={containerVariants}
             className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center"
           >
-            {stats.map((stat) => (
+            {aboutUsStats.map((stat) => (
               <motion.div
                 variants={fadeInFromBottom}
                 key={stat.title}

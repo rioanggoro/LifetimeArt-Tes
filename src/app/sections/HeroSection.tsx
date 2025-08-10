@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { Button } from '@/components/ui/button';
+import { Button } from '@/app/components/ui/button';
 import { ArrowUpRight } from 'lucide-react';
 import { motion, useInView, type Variants } from 'framer-motion';
 import { useRef } from 'react';

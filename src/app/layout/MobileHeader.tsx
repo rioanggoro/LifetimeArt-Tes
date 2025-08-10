@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { MountainIcon, MenuIcon, XIcon } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import { Button } from '@/app/components/ui/button';
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence, type Variants } from 'framer-motion';
 
