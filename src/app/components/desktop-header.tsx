@@ -12,32 +12,23 @@ export default function SiteHeader() {
     const handleScroll = () => {
       const scrollY = window.scrollY;
       setIsScrolled(scrollY > 10);
-      
+
       // Check if we're on a white background section (like About Us)
       const aboutSection = document.getElementById('about-us');
       if (aboutSection) {
         const rect = aboutSection.getBoundingClientRect();
         const headerHeight = 80; // header height
-        setIsOnWhiteSection(rect.top <= headerHeight && rect.bottom > headerHeight);
+        setIsOnWhiteSection(
+          rect.top <= headerHeight && rect.bottom > headerHeight
+        );
       }
     };
-    
+
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Determine text color based on section
   const textColor = isOnWhiteSection ? 'text-black' : 'text-white';
-      }
-    };
-    
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  // Determine text color based on section
-  const textColor = isOnWhiteSection ? 'text-black' : 'text-white';
-  const hoverTextColor = isOnWhiteSection ? 'hover:text-gray-700' : 'hover:text-white';
 
   const navLinks = [
     { name: 'About', href: '#about-us' },
@@ -50,8 +41,8 @@ export default function SiteHeader() {
   return (
     <header
       className={`hidden md:block fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled || isOnWhiteSection 
-          ? 'bg-white/90 backdrop-blur-sm shadow-sm' 
+        isScrolled || isOnWhiteSection
+          ? 'bg-white/90 backdrop-blur-sm shadow-sm'
           : 'bg-transparent'
       }`}
     >
@@ -66,8 +57,8 @@ export default function SiteHeader() {
               key={link.name}
               href={link.href}
               className={`text-sm font-medium transition-colors ${
-                isOnWhiteSection 
-                  ? 'text-gray-600 hover:text-black' 
+                isOnWhiteSection
+                  ? 'text-gray-600 hover:text-black'
                   : 'text-neutral-300 hover:text-white'
               }`}
             >
