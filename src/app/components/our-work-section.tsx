@@ -1,9 +1,14 @@
 'use client';
 
 import Image from 'next/image';
-import { useRef } from 'react';
-import { motion, useInView, type Variants } from 'framer-motion';
-import { MessageSquare } from 'lucide-react';
+import { useState, useRef } from 'react';
+import {
+  motion,
+  useInView,
+  type Variants,
+  AnimatePresence,
+} from 'framer-motion';
+import { ArrowLeft, ArrowRight } from 'lucide-react';
 
 const projectsData = [
   {
@@ -57,6 +62,7 @@ const itemFadeInUp: Variants = {
   visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: 'easeOut' } },
 };
 
+// --- Komponen Project Card (Terpisah) ---
 interface ProjectCardProps {
   project: (typeof projectsData)[0];
   isReversed?: boolean;
@@ -148,9 +154,21 @@ function ProjectCard({ project, isReversed = false }: ProjectCardProps) {
   );
 }
 
+// --- Komponen Utama ---
 export default function OurWorkSection() {
   const sectionRef = useRef(null);
   const isInView = useInView(sectionRef, { once: true, amount: 0.2 });
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  const nextProject = () => {
+    setCurrentIndex((prevIndex) => (prevIndex + 1) % projectsData.length);
+  };
+
+  const prevProject = () => {
+    setCurrentIndex(
+      (prevIndex) => (prevIndex - 1 + projectsData.length) % projectsData.length
+    );
+  };
 
   return (
     <motion.section
@@ -162,7 +180,6 @@ export default function OurWorkSection() {
       className="w-full py-24 lg:py-32 bg-white text-black"
     >
       <div className="mx-auto w-full max-w-7xl px-6 lg:px-8">
-        {/* Title Block */}
         <motion.div
           variants={itemFadeInUp}
           className="text-center mb-16 max-w-3xl mx-auto"
@@ -179,15 +196,54 @@ export default function OurWorkSection() {
           </p>
         </motion.div>
 
-        {/* Project Cards Container */}
-        <div className="space-y-16 lg:space-y-24">
+        <div className="hidden lg:block space-y-16 lg:space-y-24">
           {projectsData.map((project, index) => (
             <ProjectCard
               key={project.title}
               project={project}
-              isReversed={index % 2 !== 0} // Selang-seling layout
+              isReversed={index % 2 !== 0}
             />
           ))}
+        </div>
+
+        <div className="lg:hidden">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={currentIndex}
+              initial={{ opacity: 0, x: 50 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -50 }}
+              transition={{ duration: 0.3 }}
+            >
+              <ProjectCard project={projectsData[currentIndex]} />
+            </motion.div>
+          </AnimatePresence>
+
+          <div className="flex items-center justify-center gap-4 mt-8">
+            <button
+              onClick={prevProject}
+              className="p-2 rounded-full bg-gray-100 hover:bg-gray-200 transition-colors"
+            >
+              <ArrowLeft size={20} />
+            </button>
+            <div className="flex items-center gap-2">
+              {projectsData.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => setCurrentIndex(index)}
+                  className={`w-2 h-2 rounded-full transition-colors ${
+                    currentIndex === index ? 'bg-black' : 'bg-gray-300'
+                  }`}
+                />
+              ))}
+            </div>
+            <button
+              onClick={nextProject}
+              className="p-2 rounded-full bg-gray-100 hover:bg-gray-200 transition-colors"
+            >
+              <ArrowRight size={20} />
+            </button>
+          </div>
         </div>
       </div>
     </motion.section>

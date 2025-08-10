@@ -3,7 +3,7 @@
 import type React from 'react';
 
 import Image from 'next/image';
-import { useRef } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import { motion, useInView, type Variants } from 'framer-motion';
 import { Star } from 'lucide-react';
 
@@ -109,7 +109,7 @@ const TestimonialCard = ({
 }: {
   testimonial: (typeof testimonialsData)[0];
 }) => (
-  <div className="flex-shrink-0 w-80 md:w-96 bg-gray-100 p-6 rounded-2xl shadow-sm">
+  <div className="flex-shrink-0 w-full max-w-sm bg-gray-100 p-6 rounded-2xl shadow-sm snap-center">
     <div className="flex gap-1 mb-4">
       {Array.from({ length: testimonial.rating }).map((_, i) => (
         <Star key={i} className="h-4 w-4 text-amber-400 fill-amber-400" />
@@ -157,11 +157,73 @@ const TestimonialMarqueeRow = ({
   </div>
 );
 
+const MobileTestimonialCarousel = ({
+  testimonials,
+}: {
+  testimonials: typeof testimonialsData;
+}) => {
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  const handleScroll = () => {
+    if (scrollRef.current) {
+      const scrollLeft = scrollRef.current.scrollLeft;
+      const cardWidth = scrollRef.current.children[0]?.clientWidth || 0;
+      const gap = 24; // Tailwind's gap-6 is 24px
+      const newIndex = Math.round(scrollLeft / (cardWidth + gap));
+      setCurrentIndex(newIndex);
+    }
+  };
+
+  const scrollToCard = (index: number) => {
+    if (scrollRef.current) {
+      const cardWidth = scrollRef.current.children[0]?.clientWidth || 0;
+      const gap = 24; // Tailwind's gap-6 is 24px
+      scrollRef.current.scrollTo({
+        left: index * (cardWidth + gap),
+        behavior: 'smooth',
+      });
+    }
+  };
+
+  useEffect(() => {
+    const currentRef = scrollRef.current;
+    currentRef?.addEventListener('scroll', handleScroll);
+    return () => {
+      currentRef?.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
+  return (
+    <div className="flex flex-col items-center">
+      <div
+        ref={scrollRef}
+        className="flex overflow-x-scroll snap-x snap-mandatory scroll-smooth pb-4 gap-6 no-scrollbar w-full px-6"
+      >
+        {testimonials.map((testimonial, index) => (
+          <TestimonialCard key={index} testimonial={testimonial} />
+        ))}
+      </div>
+      <div className="flex gap-2 mt-4">
+        {testimonials.map((_, index) => (
+          <button
+            key={index}
+            className={`h-2 w-2 rounded-full transition-colors duration-200 ${
+              currentIndex === index ? 'bg-black' : 'bg-gray-300'
+            }`}
+            onClick={() => scrollToCard(index)}
+            aria-label={`Go to testimonial ${index + 1}`}
+          />
+        ))}
+      </div>
+    </div>
+  );
+};
+
 export default function TestimonialsSection() {
   const sectionRef = useRef(null);
   const isInView = useInView(sectionRef, { once: true, amount: 0.2 });
 
-  // Ensure enough data for two rows, duplicating if necessary for continuous scroll
   const firstRowData = testimonialsData.slice(0, 6);
   const secondRowData = testimonialsData.slice(6, 12);
 
@@ -188,7 +250,8 @@ export default function TestimonialsSection() {
           </p>
         </motion.div>
       </div>
-      <motion.div variants={itemFadeInUp} className="space-y-8">
+
+      <motion.div variants={itemFadeInUp} className="space-y-8 hidden md:block">
         <TestimonialMarqueeRow
           testimonials={firstRowData}
           direction="left"
@@ -199,6 +262,10 @@ export default function TestimonialsSection() {
           direction="right"
           duration="60s"
         />
+      </motion.div>
+
+      <motion.div variants={itemFadeInUp} className="md:hidden">
+        <MobileTestimonialCarousel testimonials={testimonialsData} />
       </motion.div>
     </motion.section>
   );

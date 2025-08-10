@@ -23,7 +23,7 @@ const servicesData = [
     id: 'Kitchens',
     title: 'Kitchens',
     description:
-      "At LifetimeArt, we design and build stunning kitchens tailored to your style and needs. Whether you're after a sleek modern space or a classic, timeless look, our expert team delivers premium craftsmanship, functionality, and attention to detail to create the heart of your home.",
+      'At LifetimeArt, we design and build stunning kitchens tailored to your style and needs. Whether you prefer sleek modern lines or a timeless, classic look, our team delivers premium craftsmanship, functional layouts, and meticulous attention to detail—creating a kitchen you’ll love to cook and gather in.',
     icon: CookingPot,
     imageSrc: '/images/hero-image.jpg',
   },
@@ -39,7 +39,7 @@ const servicesData = [
     id: 'Bathrooms',
     title: 'Bathrooms',
     description:
-      'We create bathrooms that balance relaxation and practicality, with designs ranging from spa-inspired retreats to minimalist, functional spaces. Our team sources high-quality fixtures and finishes, ensuring durability, elegance, and comfort for years to come.',
+      ' We create bathrooms that balance relaxation and practicality, with designs ranging from spa-inspired retreats to minimalist, functional spaces. Our team sources high-quality fixtures and finishes, ensuring durability, elegance, and comfort for years to come.',
     icon: Bath,
     imageSrc: '/images/img-6.png',
   },
@@ -117,9 +117,10 @@ export default function ServicesSection() {
         </motion.div>
 
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
+          {/* ✅ PERBAIKAN DI SINI: `sticky` diubah menjadi `lg:sticky` */}
           <motion.div
             variants={itemVariants}
-            className="sticky top-24 h-[500px] lg:h-[600px]"
+            className="lg:sticky top-24 h-[500px] lg:h-[600px]"
           >
             <AnimatePresence mode="wait">
               <motion.div
@@ -151,7 +152,6 @@ export default function ServicesSection() {
                   key={service.id}
                   className="border-b border-neutral-200 py-4"
                 >
-                  {/* ✨ Tombol accordion dengan efek hover */}
                   <button
                     onClick={() => handleToggle(service.id)}
                     className="w-full flex justify-between items-center text-left group"

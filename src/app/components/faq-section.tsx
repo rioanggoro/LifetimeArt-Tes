@@ -7,7 +7,7 @@ import {
   useInView,
   type Variants,
 } from 'framer-motion';
-import { Plus, ArrowUpRight } from 'lucide-react';
+import { Plus, ArrowUpRight, X } from 'lucide-react'; // Import X icon for open state
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 
@@ -20,7 +20,7 @@ const faqData = [
   {
     question: 'How long does a typical project take?',
     answer:
-      'Project timelines vary depending on size and complexity. We’ll provide an estimated schedule during your consultation and keep you updated throughout the process.',
+      'Project timelines vary depending on size and complexity. We’ll provide an estimated schedule during your consultation and keep you updated throughout the process',
   },
   {
     question: 'Do you offer free quotes?',
@@ -56,6 +56,7 @@ const sectionVariants: Variants = {
     transition: { staggerChildren: 0.2, duration: 0.4 },
   },
 };
+
 const itemFadeInUp: Variants = {
   hidden: { opacity: 0, y: 20 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: 'easeOut' } },
@@ -86,18 +87,19 @@ function AccordionItem({ item, isOpen, onToggle }: AccordionItemProps) {
           animate={{ rotate: isOpen ? 45 : 0 }}
           transition={{ duration: 0.3, ease: 'easeOut' }}
         >
-          <Plus
-            className={`h-5 w-5 flex-shrink-0 ${
-              isOpen ? 'text-black' : 'text-neutral-500'
-            }`}
-          />
+          {/* Use X icon when open, Plus when closed */}
+          {isOpen ? (
+            <X className="h-5 w-5 flex-shrink-0 text-black" />
+          ) : (
+            <Plus className="h-5 w-5 flex-shrink-0 text-neutral-500" />
+          )}
         </motion.div>
       </button>
       <AnimatePresence>
         {isOpen && (
           <motion.div
             initial={{ opacity: 0, height: 0, marginTop: 0 }}
-            animate={{ opacity: 1, height: 'auto', marginTop: '16px' }}
+            animate={{ opacity: 1, height: 'auto', marginTop: '16px' }} // Adjusted margin-top
             exit={{ opacity: 0, height: 0, marginTop: 0 }}
             transition={{ duration: 0.3, ease: 'easeOut' }}
             className="overflow-hidden"
@@ -128,30 +130,39 @@ export default function FaqSection() {
     >
       <div className="mx-auto w-full max-w-7xl px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-24 items-start">
-          {/* Kolom Kiri: Judul dan Tombol */}
-          <motion.div variants={itemFadeInUp} className="lg:sticky lg:top-24">
+          {/* Left Column: Title and Button (Full width on mobile, centered) */}
+          <motion.div
+            variants={itemFadeInUp}
+            className="lg:sticky lg:top-24 text-center lg:text-left"
+          >
             <div className="inline-block rounded-full bg-black px-4 py-2 text-sm font-light text-white mb-4">
               FAQs
             </div>
             <h2 className="text-4xl font-light tracking-tight sm:text-5xl lg:text-6xl/tight mb-6">
               Answering Your Questions
             </h2>
-            <p className="text-neutral-600 text-lg mb-8">
+            <p className="text-neutral-600 text-lg mb-8 max-w-2xl mx-auto lg:mx-0">
               Got more questions? Send us your enquiry below.
             </p>
-            <Button
-              asChild
-              size="lg"
-              className="rounded-full bg-gray-100 text-black hover:bg-gray-200 h-14 px-8 text-base font-medium transition-colors group"
-            >
-              <Link href="#contact">
-                Get in touch
-                <ArrowUpRight className="h-4 w-4 ml-2 transition-transform duration-300 group-hover:translate-x-1" />
+            {/* Custom two-tone button */}
+            <div className="inline-flex rounded-full bg-gray-100 pr-2 shadow-sm">
+              <Button
+                asChild
+                size="lg"
+                className="rounded-full bg-gray-100 text-black hover:bg-gray-200 h-14 px-8 text-base font-medium transition-colors group"
+              >
+                <Link href="#contact">Get in touch</Link>
+              </Button>
+              <Link
+                href="#contact"
+                className="flex items-center justify-center h-14 w-14 rounded-full bg-black text-white transition-colors duration-300 hover:bg-neutral-800"
+                aria-label="Get in touch"
+              >
+                <ArrowUpRight className="h-5 w-5" />
               </Link>
-            </Button>
+            </div>
           </motion.div>
-
-          {/* Kolom Kanan: Daftar Accordion */}
+          {/* Right Column: Accordion List (Full width on mobile) */}
           <div className="space-y-4">
             {faqData.map((faq, index) => (
               <AccordionItem
