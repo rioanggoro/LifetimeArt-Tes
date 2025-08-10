@@ -1,5 +1,7 @@
 import AboutUsSection from './components/about-us-section';
 import FaqSection from './components/faq-section';
+import Footer from './components/footer';
+import GetInTouchSection from './components/get-in-touch-section';
 import HeroSection from './components/hero-section';
 import OurWorkSection from './components/our-work-section';
 import ServicesSection from './components/service-section';
@@ -17,6 +19,8 @@ export default function Home() {
         <OurWorkSection />
         <TestimonialsSection />
         <FaqSection />
+        <GetInTouchSection />
+        <Footer />
       </main>
     </div>
   );
